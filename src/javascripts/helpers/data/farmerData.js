@@ -1,7 +1,20 @@
 import axios from 'axios';
-import apiKeys from '../apiKeys.json';
+import apiKeys from '../apikeys.json';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
+
+const getAllFarmers = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/farmers.json`).then((response) => {
+    const demFarmers = response.data;
+    const farmers = [];
+    if (demFarmers) {
+      Object.keys(demFarmers).forEach((farmerId) => {
+        farmers.push(demFarmers[farmerId]);
+      });
+    }
+    resolve(farmers);
+  }).catch((error) => reject(error));
+});
 
 const checkIfFarmerExistsInFirebase = (farmer) => {
   axios
@@ -37,4 +50,4 @@ const setCurrentFarmer = (farmerObj) => {
   return farmer;
 };
 
-export default { setCurrentFarmer };
+export default { setCurrentFarmer, getAllFarmers };
