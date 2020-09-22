@@ -12,6 +12,7 @@ const getCows = () => new Promise((resolve, reject) => {
       Object.keys(demCows).forEach((cowId) => {
         cows.push(demCows[cowId]);
       });
+      console.warn(cows);
     }
     resolve(cows);
   }).catch((error) => reject(error));
