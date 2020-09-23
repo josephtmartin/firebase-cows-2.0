@@ -1,6 +1,6 @@
 import 'bootstrap';
 import firebase from 'firebase/app';
-import apiKeys from './helpers/apiKeys.json';
+import apiKeys from './helpers/apikeys.json';
 import authData from './helpers/data/authData';
 
 import '../styles/main.scss';
